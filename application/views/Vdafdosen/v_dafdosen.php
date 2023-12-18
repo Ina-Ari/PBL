@@ -29,8 +29,8 @@
             <td><?php echo $key['nip'] ?></td>
             <td><?php echo $key['nama_pegawai'] ?></td>
             <td>
-              <a class="btn btn-warning" href="<?php echo base_url('Cdafdosen/c_dafdosen/editPegawai/'.$key['id_pegawai']) ?>">Detail</a>
-              <a class="btn btn-danger" href="<?php echo base_url('Cdafdosen/c_dafdosen/hapusPegawai/'.$key['id_pegawai']) ?>" onclick="return confirm_hapus()">Delete</a> 
+              <a class="btn btn-warning" href="<?php echo base_url('Cdafdosen/c_dafdosen/editPegawai/'.$key['id_pegawai']) ?>"><i class="fa-solid fa-file-pen"></i></a>
+              <a class="btn btn-danger" href="<?php echo base_url('Cdafdosen/c_dafdosen/hapusPegawai/'.$key['id_pegawai']) ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
             </td>
           </tr>
         </tbody>

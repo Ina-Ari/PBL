@@ -5,17 +5,15 @@ class c_dashboard extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Mdashboard/m_dashboard');
   }
 
   public function index()
   {
     $data = [
       'bootstrap' => 'partial/bootstrap',
-      'loader'    => 'partial/loader',
       'navbar'    => 'partial/navbar',
       'sidebar'   => 'partial/sidebar',
-      'header'    => 'partial/header',
+      'footer'    => 'partial/footer',
       'content'   => 'Vdasboard/v_dashboard',
       'script'    => 'partial/script'
     ];

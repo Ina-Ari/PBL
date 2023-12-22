@@ -1,24 +1,19 @@
-<nav class="navbar header-navbar pcoded-header">
-  <div class="navbar-wrapper">
-    <div class="navbar-logo">
-      <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
-        <i class="ti-menu"></i>
-      </a>
-      <a>
-        <h4>Kepegawaian</h4>
-      </a>
-      <a class="mobile-options waves-effect waves-light">
-        <i class="ti-more"></i>
-      </a>
+<nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+    <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <h2 class="text mb-0"><img src="<?php echo base_url('assets/images/logo1.png')?>" width="60"></h2>
+    </a>
+    <a href="#" class="sidebar-toggler flex-shrink-0">
+        <i class="fa fa-bars text"></i>
+    </a>
+    <div class="navbar-nav align-items-center ms-auto">
+        <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <img class="rounded-circle me-lg-2" src="<?php echo base_url('assets/images/user.jpg') ?>" alt="" style="width: 40px; height: 40px;">
+                <span class="d-none d-lg-inline-flex">John Doe</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                <a href="#" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
     </div>
-    <div class="navbar-container container-fluid">
-      <ul class="nav-right">
-        <li>
-          <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
-            <i class="ti-fullscreen"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>

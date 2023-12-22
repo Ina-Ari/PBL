@@ -1,37 +1,27 @@
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="description" content="Mega Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-      <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
-      <meta name="author" content="codedthemes" />
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
 
-      <!-- Favicon icon -->
-<!--    <link rel="icon" href="<?php echo base_url('assets/images/favicon.ico');?>" type="image/x-icon"> -->
+<!-- Favicon -->
+<link href="<?php echo base_url('assets/images/logo1.png') ?>" rel="icon">
 
-      <!-- Google font-->
-      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-      <!-- waves.css -->
-      <link rel="stylesheet" href="<?php echo base_url('assets/pages/waves/css/waves.min.css')?>" type="text/css" media="all">
+<!-- Icon Font Stylesheet -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/9a92937c5f.js" crossorigin="anonymous"></script>
 
-      <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap/css/bootstrap.min.css');?>">
+<!-- Libraries Stylesheet -->
+<link href="<?php echo base_url('assets/lib/owlcarousel/assets/owl.carousel.min.css') ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') ?>" rel="stylesheet" />
 
-      <!-- waves.css -->
-      <link rel="stylesheet" href="<?php echo base_url('assets/pages/waves/css/waves.min.css');?>" type="text/css" media="all">
+<!-- Customized Bootstrap Stylesheet -->
+<link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
 
-      <!-- themify icon -->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/icon/themify-icons/themify-icons.css');?>">
-
-      <!-- Font Awesome -->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/icon/font-awesome/css/font-awesome.min.css');?>">
-      <script src="https://kit.fontawesome.com/9a92937c5f.js" crossorigin="anonymous"></script>
-
-      <!-- scrollbar.css -->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/jquery.mCustomScrollbar.css');?>">
-
-      <!-- am chart export.css -->
-      <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-
-      <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css');?>">
+<!-- Template Stylesheet -->
+<link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">

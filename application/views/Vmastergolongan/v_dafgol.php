@@ -23,7 +23,7 @@
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $key['jenis_golongan'] ?></td>
                             <td>
-                              <a class="btn btn-warning" href="<?php echo base_url('Cmastergolongan/c_dafgol/ubahDafgol/'.$key['id_jenis_golongan']) ?>"><i class="fa-solid fa-file-pen"></i></a>
+                              <a class="btn btn-warning" href="<?php echo base_url('Cmastergolongan/c_dafgol/ubahDafgol/'.$key['id_jenis_golongan']) ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                               <a class="btn btn-danger" href="<?php echo base_url('Cmastergolongan/c_dafgol/hapusDafgol/'.$key['id_jenis_golongan']) ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
                             </td>
                           </tr>

@@ -9,20 +9,24 @@
               <div class="card-block col-8">
                 <?php echo form_open_multipart('Cpegawai/c_pegawai/insertPendidikan/' . $peg[0]['id_pegawai']); ?>
                   <div class="form-group">
-                    <label for="id_tingpen" class="col-form-label">Tingkat Pendidikan</label>
+                    <label for="id_tingpen" class="col-form-label">Tingkat Pendidikan *</label>
                     <select name="id_tingpen" id="input-file" class="form-control">
+                      <option value="">-- Pilih Pendidikan --</option>
                       <?php foreach ($masterpen as $key) : ?>
                         <option value="<?php echo $key['id_tingpen'] ?>"><?php echo $key['tingkat_pendidikan'] ?></option> 
                       <?php endforeach ?>
                     </select>
+                    <?php echo form_error('id_tingpen'); ?>
                   </div>
                   <div class="form-group">
-                    <label for="nama_sekolah" class="col-form-label">Nama Sekolah</label>
-                    <input type="text"  class="form-control" name="nama_sekolah">
+                    <label for="nama_sekolah" class="col-form-label">Nama Sekolah *</label>
+                    <input type="text"  class="form-control" name="nama_sekolah" value="<?php echo set_value('nama_sekolah'); ?>">
+                    <?php echo form_error('nama_sekolah'); ?>
                   </div>
                   <div class="form-group">
-                    <label for="tanggal_lulus" class="col-form-label">Tanggal Lulus</label>
+                    <label for="tanggal_lulus" class="col-form-label">Tanggal Lulus *</label>
                     <input type="date" class="form-control" name="tanggal_lulus">
+                    <?php echo form_error('tanggal_lulus'); ?>
                   </div>
                   <div class="form-group">
                     <label for="no_ijazah" class="col-form-label">No Ijazah</label>
@@ -43,6 +47,15 @@
                   <div class="form-group">
                     <label for="file_ijazah" class="col-form-label">File Ijazah</label>
                     <input type="file" id="input-file" class="form-control" name="file_ijazah">
+                  </div>
+                  <div class="form-group">
+                    <label for="status_validasi" class="col-form-label">Status Validasi</label>
+                    <select id="input-file" class="form-control" name="status_validasi">
+                      <?php foreach ($status_validasi as $key) { ?>
+                        <?php $cek = ($key['status'] == $con['status_validasi'])? "selected" : ""; ?>
+                        <option value="<?php echo $key['status'] ?>" <?php echo $cek ?>><?php echo $key['status'] ?></option> 
+                      <?php } ?>
+                    </select>
                   </div>
                   <div>
                     <input type="hidden" name="id_pegawai" value="<?php echo $peg[0]['id_pegawai'] ?>">

@@ -23,7 +23,7 @@
                             <td><?php echo $no++ ?></td>
                             <td><?php echo $key['tingkat_pendidikan'] ?></td>
                             <td>
-                              <a class="btn btn-warning" href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan/ubahTingPen/'.$key['id_tingpen']) ?>"><i class="fa-solid fa-file-pen"></i></a>
+                              <a class="btn btn-warning" href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan/ubahTingPen/'.$key['id_tingpen']) ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                               <a class="btn btn-danger" href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan/hapusTingPen/'.$key['id_tingpen']) ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
                             </td>
                           </tr>

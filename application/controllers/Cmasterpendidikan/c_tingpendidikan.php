@@ -12,14 +12,15 @@ class c_tingpendidikan extends CI_Controller {
 	{
 		$isi = $this->m_tingpendidikan->getTingPen();
 	    $data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmasterpendidikan/v_tingpendidikan',
-	      'isi'       => $isi,
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmasterpendidikan/v_tingpendidikan',
+	      'isi'       	=> $isi,
+	      'script'    	=> 'partial/script',
+	      'active_tab'  => 'tingpen'
 	    ];
 	    $this->load->view('master', $data);
 	}
@@ -27,13 +28,14 @@ class c_tingpendidikan extends CI_Controller {
 	public function tambahTingPen()
 	{
 		$data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmasterpendidikan/v_tambahtingkat',
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmasterpendidikan/v_tambahtingkat',
+	      'script'    	=> 'partial/script',
+	      'active_tab'  => 'tingpen'
     ];
     $this->load->view('master', $data);
 	}
@@ -48,14 +50,15 @@ class c_tingpendidikan extends CI_Controller {
 	{
 		$isi = $this->m_tingpendidikan->detailTingPen($id);
 	    $data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmasterpendidikan/v_edittingpendidikn',
-	      'isi'       => $isi,
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmasterpendidikan/v_edittingpendidikn',
+	      'isi'       	=> $isi,
+	      'script'    	=> 'partial/script',
+	      'active_tab'  	=> 'tingpen'
 	    ];
 	    $this->load->view('master', $data);
 	}

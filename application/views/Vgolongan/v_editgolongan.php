@@ -53,6 +53,15 @@
                     <label for="file_sk" class="col-form-label">File SK</label>
                     <input type="file" id="input-file" class="form-control" name="file_sk" value="<?php echo $con['file_sk'] ?>">
                   </div>
+                  <div class="form-group">
+                    <label for="status_validasi" class="col-form-label">Status Validasi</label>
+                    <select id="input-file" class="form-control" name="status_validasi">
+                      <?php foreach ($status_validasi as $key) { ?>
+                        <?php $cek = ($key['status'] == $con['status_validasi'])? "selected" : ""; ?>
+                        <option value="<?php echo $key['status'] ?>" <?php echo $cek ?>><?php echo $key['status'] ?></option> 
+                      <?php } ?>
+                    </select>
+                  </div>
                   <div>
                     <input type="hidden" name="id_pegawai" value="<?php echo $con['id_pegawai'] ?>">
                   </div>

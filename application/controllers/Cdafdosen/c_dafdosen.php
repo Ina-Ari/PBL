@@ -19,7 +19,8 @@ class c_dafdosen extends CI_Controller {
       'header'    => 'partial/header',
       'content'   => 'Vdafdosen/v_dafdosen',
       'isi'       => $isi,
-      'script'    => 'partial/script'
+      'script'    => 'partial/script',
+      'active_tab' => 'dafdosen'
     ];
     $this->load->view('master', $data);
   }
@@ -33,7 +34,8 @@ class c_dafdosen extends CI_Controller {
       'sidebar'   => 'partial/sidebar',
       'header'    => 'partial/header',
       'content'   => 'Vdafdosen/v_insertdosen',
-      'script'    => 'partial/script'
+      'script'    => 'partial/script',
+      'active_tab' => 'dafdosen'
     ];
     $this->load->view('master', $data);
   }

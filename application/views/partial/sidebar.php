@@ -15,21 +15,12 @@
         </div>
 
         <div class="navbar-nav w-100" id="sidebar-dashboard">
-            <a href="<?php echo base_url('Cdashboard/c_dashboard'); ?>" class="nav-item nav-link active  sidebar-dashboard-active" onclick="return addClassActive(this)"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="<?php echo base_url('Cdafdosen/c_dafdosen'); ?>" class="nav-item nav-link sidebar-dashboard-active" onclick="return addClassActive(this)"><i class="fa-solid fa-users me-2"></i>Daftar Dosen</a>
-            <a href="<?php echo base_url('Cmastergolongan/c_dafgol'); ?>" class="nav-item nav-link sidebar-dashboard-active" onclick="return addClassActive(this)"><i class="fa-solid fa-user-tie me-2"></i>Daftar Golongan</a>
-            <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan'); ?>" class="nav-item nav-link sidebar-dashboard-active" onclick="return addClassActive(this)"><i class="fa-solid fa-user-graduate me-2"></i>Daftar Pendidikan</a>
+            <a href="<?php echo base_url('Cdashboard/c_dashboard'); ?>" class="<?php echo ($active_tab == 'dashboard') ? 'active' : ''; ?> nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="<?php echo base_url('Cdafdosen/c_dafdosen'); ?>" class="<?php echo ($active_tab == 'dafdosen') ? 'active' : ''; ?> nav-item nav-link"><i class="fa-solid fa-users me-2"></i>Daftar Dosen</a>
+            <a href="<?php echo base_url('Cmastergolongan/c_dafgol'); ?>" class="<?php echo ($active_tab == 'dafgol') ? 'active' : ''; ?> nav-item nav-link"><i class="fa-solid fa-user-tie me-2"></i>Daftar Golongan</a>
+            <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan'); ?>" class="<?php echo ($active_tab == 'tingpen') ? 'active' : ''; ?> nav-item nav-link"><i class="fa-solid fa-user-graduate me-2"></i>Daftar Pendidikan</a>
+            <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan'); ?>" class="nav-item nav-link"><i class="fa-solid fa-users-viewfinder me-2"></i>Daftar Jabatan <span style="margin-left: 48px;">Fungsional</span></a>
+            <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan'); ?>" class="nav-item nav-link"><i class="fa-solid fa-users-between-lines me-2"></i>Daftar Jabatan <span style="margin-left: 48px;">Struktural</span></a>
         </div>
     </nav>
 </div>
-
-<script type="text/javascript">
-    let subSidebars = document.querySelectorAll(".sidebar-dashboard-active");
-    subSidebars.forEach(item => {
-        item.addEventListener("click", () => {
-            document.querySelector(".active")?.classList.remove("active");
-            item.classList.add("active"); 
-        });
-    });
-</script>
-<!-- Sidebar End -->

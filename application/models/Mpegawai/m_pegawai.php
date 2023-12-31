@@ -37,15 +37,50 @@ class m_pegawai extends CI_Model {
 		return $hasil;
 	}
 
-	// public function deleteDataUtama($id_pegawai, $id)
-	// {
-	// 	$this->db->where('id_pegawai', $id_pegawai);
-	// 	$this->db->where('id_golongan', $id);
-	// 	$hasil = $this->db->delete('golongan');
-	// 	return $hasil;
-	// }
+	public function dataPegawai($id)
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('pegawai.id_pegawai', $id);
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		return $isi;
+	}
+
 
 	// PENDIDIKAN
+		public function dataPendidikanPegawai($id)
+	{
+		$this->db->select('*');
+		$this->db->from('pendidikan');
+		$this->db->where('pendidikan.id_pegawai', $id);
+		$this->db->join('pegawai', 'pendidikan.id_pegawai = pegawai.id_pegawai', 'left');
+		$this->db->join('master_pendidikan', 'pendidikan.id_tingpen = master_pendidikan.id_tingpen', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		// var_dump($isi);die;
+		return $isi;
+	}
+
+	public function getPendidikanById($id, $id_pendidikan)
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('pegawai.id_pegawai', $id);
+		$this->db->join('pendidikan', 'pegawai.id_pegawai = pendidikan.id_pegawai', 'left');
+		$this->db->join('master_pendidikan', 'pendidikan.id_tingpen = master_pendidikan.id_tingpen', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		$data = [];
+		for ($i=0; $i < count($isi); $i++) { 
+			if ($id_pendidikan == $isi[$i]['id_pendidikan']) {
+				$data = $isi[$i];
+			}
+		}
+		// var_dump($data);die;
+		return $data;
+	}
+	
 	public function insertPendidikan($id)
 	{
 		$config['upload_path'] 	 = './assets/images/pendidikan';
@@ -54,14 +89,16 @@ class m_pegawai extends CI_Model {
 		$this->load->library('upload', $config);
 		
 		$pen = array(
-			'id_tingpen' 	 => $this->input->post('id_tingpen'), 
+			'id_tingpen' 	=> $this->input->post('id_tingpen'),
 			'nama_sekolah' 	 => $this->input->post('nama_sekolah'), 
 			'tanggal_lulus'  => $this->input->post('tanggal_lulus'), 
 			'no_ijazah' 	 => $this->input->post('no_ijazah'), 
 			'jurusan' 		 => $this->input->post('jurusan'), 
 			'gelar_depan' 	 => $this->input->post('gelar_depan'), 
 			'gelar_belakang' => $this->input->post('gelar_belakang'), 
-			'id_pegawai' 	 => $this->input->post('id_pegawai')
+			'id_pegawai' 	 => $this->input->post('id_pegawai'),
+			'status_validasi'=> $this->input->post('status_validasi')
+
 		);
 
 		if ($this->upload->do_upload('file_ijazah')) {
@@ -70,9 +107,18 @@ class m_pegawai extends CI_Model {
 			$pen['file_ijazah'] = 'assets/images/pendidikan/' . $data_foto;
 		}
 
+		// if (empty($pen['id_tingpen'])) {
+		// 	$this->session->set_flashdata('error', 'Tingkat Pendidikan Kosong!');
+		// 	redirect("Cpegawai/c_pegawai/tambahPendidikan/{$id}");
+		// } else {
+		// 	$hasil = $this->db->insert('pendidikan', $pen);
+		// 	return $hasil;
+		// }
+
 		$hasil = $this->db->insert('pendidikan', $pen);
 		return $hasil;
-	
+
+		
 	}
 
 	public function updateDataPendidikan($id, $id_pegawai)
@@ -90,7 +136,8 @@ class m_pegawai extends CI_Model {
 			'jurusan' 		 => $this->input->post('jurusan'), 
 			'gelar_depan' 	 => $this->input->post('gelar_depan'), 
 			'gelar_belakang' => $this->input->post('gelar_belakang'), 
-			'id_pegawai' 	 => $this->input->post('id_pegawai')
+			'id_pegawai' 	 => $this->input->post('id_pegawai'),
+			'status_validasi'=> $this->input->post('status_validasi')
 		);
 
 		if ($this->upload->do_upload('file_ijazah')) {
@@ -120,6 +167,38 @@ class m_pegawai extends CI_Model {
 	}
 
 	//BAGIAN GOLONGAN
+	public function dataGolonganPegawai($id)
+	{
+		$this->db->select('*');
+		$this->db->from('golongan');
+		$this->db->where('golongan.id_pegawai', $id);
+		$this->db->join('pegawai', 'golongan.id_pegawai = pegawai.id_pegawai', 'left');
+		$this->db->join('master_golongan', 'golongan.id_jenis_golongan = master_golongan.id_jenis_golongan', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		// var_dump($isi);die;
+		return $isi;
+	}
+
+	public function getGolonganById($id, $id_golongan)
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('pegawai.id_pegawai', $id);
+		$this->db->join('golongan', 'pegawai.id_pegawai = golongan.id_pegawai', 'left');
+		$this->db->join('master_golongan', 'golongan.id_jenis_golongan = master_golongan.id_jenis_golongan', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		$data = [];
+		for ($i=0; $i < count($isi); $i++) { 
+			if ($id_golongan == $isi[$i]['id_golongan']) {
+				$data = $isi[$i];
+			}
+		}
+		// var_dump($data);die;
+		return $data;
+	}
+
 	public function insertGolongan($id)
 	{
 		$config['upload_path'] 	 = './assets/images/golongan';
@@ -137,13 +216,14 @@ class m_pegawai extends CI_Model {
 				'tanggal_bkn' 		=> $this->input->post('tanggal_bkn'), 
 				'nomor_bkn' 		=> $this->input->post('nomor_bkn'),
 				'jenis_kp' 			=> $this->input->post('jenis_kp'),
-				'id_pegawai' 		=> $this->input->post('id_pegawai')
+				'id_pegawai' 		=> $this->input->post('id_pegawai'),
+				'status_validasi'	=> $this->input->post('status_validasi')
 			);
 
 		if ($this->upload->do_upload('file_sk')){
 			$data = array('upload_data' => $this->upload->data());
 			$data_foto = $data['upload_data']['file_name'];
-			$peg['file_sk'] = 'assets/images/pendidikan/' . $data_foto;
+			$gol['file_sk'] = 'assets/images/golongan/' . $data_foto;
 		}
 		
 		$hasil = $this->db->insert('golongan', $gol);
@@ -168,13 +248,14 @@ class m_pegawai extends CI_Model {
 				'tanggal_bkn' 		=> $this->input->post('tanggal_bkn'), 
 				'nomor_bkn' 		=> $this->input->post('nomor_bkn'),
 				'jenis_kp' 			=> $this->input->post('jenis_kp'),
-				'id_pegawai' 		=> $this->input->post('id_pegawai')
+				'id_pegawai' 		=> $this->input->post('id_pegawai'),
+				'status_validasi'=> $this->input->post('status_validasi')
 			);
 
 		if ($this->upload->do_upload('file_sk')){
 			$data = array('upload_data' => $this->upload->data());
 			$data_foto = $data['upload_data']['file_name'];
-			$gol['file_sk'] = 'assets/images/pendidikan/' . $data_foto;
+			$gol['file_sk'] = 'assets/images/golongan/' . $data_foto;
 		}
 
 		$this->db->where('id_pegawai', $id_pegawai);
@@ -198,6 +279,36 @@ class m_pegawai extends CI_Model {
 	}
 
 	//BAGIAN DIKLAT STRUKTURAL
+	public function dataDikstrukPegawai($id)
+	{
+		$this->db->select('*');
+		$this->db->from('diklat_struktural');
+		$this->db->where('diklat_struktural.id_pegawai', $id);
+		$this->db->join('pegawai', 'diklat_struktural.id_pegawai = pegawai.id_pegawai', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		// var_dump($isi);die;
+		return $isi;
+	}
+
+	public function getDikstrukById($id, $id_diklat)
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('pegawai.id_pegawai', $id);
+		$this->db->join('diklat_struktural', 'pegawai.id_pegawai = diklat_struktural.id_pegawai', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		$data = [];
+		for ($i=0; $i < count($isi); $i++) { 
+			if ($id_diklat == $isi[$i]['id_diklat']) {
+				$data = $isi[$i];
+			}
+		}
+		// var_dump($data);die;
+		return $data;
+	}
+
 	public function insertDikstruk($id)
 	{
 		$config['upload_path'] 	 = './assets/images/DiklatStruktural';
@@ -210,7 +321,8 @@ class m_pegawai extends CI_Model {
 			'lokasi_diklat'  => $this->input->post('lokasi_diklat'), 
 			'tanggal_mulai'  => $this->input->post('tanggal_mulai'), 
 			'tanggal_selesai'=> $this->input->post('tanggal_selesai'), 
-			'id_pegawai' 	 => $this->input->post('id_pegawai')
+			'id_pegawai' 	 => $this->input->post('id_pegawai'),
+			'status_validasi'=> $this->input->post('status_validasi')
 		);
 
 		if ($this->upload->do_upload('berkas_validasi')) {
@@ -236,7 +348,8 @@ class m_pegawai extends CI_Model {
 			'lokasi_diklat'  => $this->input->post('lokasi_diklat'), 
 			'tanggal_mulai'  => $this->input->post('tanggal_mulai'), 
 			'tanggal_selesai'=> $this->input->post('tanggal_selesai'), 
-			'id_pegawai' 	 => $this->input->post('id_pegawai')
+			'id_pegawai' 	 => $this->input->post('id_pegawai'),
+			'status_validasi'=> $this->input->post('status_validasi')
 		);
 		
 		if ($this->upload->do_upload('berkas_validasi')) {
@@ -260,6 +373,36 @@ class m_pegawai extends CI_Model {
 
 
 	//BAGIAN DIKLAT FUNGSIONAL
+	public function dataDikfungPegawai($id)
+	{
+		$this->db->select('*');
+		$this->db->from('diklat_fungsional');
+		$this->db->where('diklat_fungsional.id_pegawai', $id);
+		$this->db->join('pegawai', 'diklat_fungsional.id_pegawai = pegawai.id_pegawai', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		// var_dump($isi);die;
+		return $isi;
+	}
+
+	public function getDikfungById($id, $id_diklat)
+	{
+		$this->db->select('*');
+		$this->db->from('pegawai');
+		$this->db->where('pegawai.id_pegawai', $id);
+		$this->db->join('diklat_fungsional', 'pegawai.id_pegawai = diklat_fungsional.id_pegawai', 'left');
+		$result = $this->db->get();
+		$isi = $result->result_array();
+		$data = [];
+		for ($i=0; $i < count($isi); $i++) { 
+			if ($id_diklat == $isi[$i]['id_diklat']) {
+				$data = $isi[$i];
+			}
+		}
+		// var_dump($data);die;
+		return $data;
+	}
+
 	public function insertDikfung($id)
 	{	
 		$dikfung = array(
@@ -302,6 +445,37 @@ class m_pegawai extends CI_Model {
 		$this->db->where('id_pegawai', $id_pegawai);
 		$this->db->where('id_diklat', $id_diklat);
 		$this->db->delete('diklat_fungsional');
+	}
+
+	//FORM VALIDATION
+	public function validasiPendidikan()
+	{
+		return [
+			[
+				'field' => 'id_tingpen',
+				'label' => 'Tingkat Pendidikan',
+				'rules' => 'required',
+				'error' => [
+							 'required' => '%s Tidak Boleh Kosong!'
+						   ],
+			],
+			[
+				'field' => 'nama_sekolah',
+				'label' => 'Nama Sekolah',
+				'rules' => 'required|max_length[70]',
+				'error' => [
+							 'required' => '%s Tidak Boleh Kosong!'
+						   ],
+			],
+			[
+				'field' => 'tanggal_lulus',
+				'label' => 'Tanggal Lulus',
+				'rules' => 'required',
+				'error' => [
+							 'required' => '%s Tidak Boleh Kosong!'
+						   ],
+			],
+		];
 	}
 
 }

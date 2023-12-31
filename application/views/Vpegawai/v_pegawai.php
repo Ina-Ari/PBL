@@ -105,6 +105,7 @@
                             <th>Gelar Depan</th>
                             <th>Gelar Belakang</th>
                             <th>File Ijazah</th>
+                            <th>Status Validasi</th>
                             <th>Aksi</th>
                         </thead>
                         <?php 
@@ -121,7 +122,8 @@
                             <td><?php echo $pen['jurusan'] ?></td>
                             <td><?php echo $pen['gelar_depan'] ?></td>
                             <td><?php echo $pen['gelar_belakang'] ?></td>
-                            <td><a href="<?php echo base_url($pen['file_ijazah'])?>" target="_blank"><img src="<?php echo base_url($pen['file_ijazah'])?>" width="130"></a></td>                                             
+                            <td><a href="<?php echo base_url($pen['file_ijazah'])?>" target="_blank"><img src="<?php echo base_url($pen['file_ijazah'])?>" width="130"></a></td>
+                            <td><?php echo $pen['status_validasi'] ?></td>                                             
                             <td>
                               <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editPendidikan/' . $pen['id_pegawai'] . '/' . $pen['id_pendidikan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                               <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusPendidikan/' . $pen['id_pegawai'] . '/' . $pen['id_pendidikan']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
@@ -160,6 +162,7 @@
                           <th>Nomor BKN</th>
                           <th>Jenis KP</th>
                           <th>File SK</th>
+                          <th>Status Validasi</th>
                           <th>Aksi</th>
                       </thead>
                       <?php 
@@ -179,6 +182,7 @@
                           <td><?php echo $gol['nomor_bkn'] ?></td>
                           <td><?php echo $gol['jenis_kp'] ?></td>
                           <td><a href="<?php echo base_url($gol['file_sk'])?>" target="_blank"><img src="<?php echo base_url($gol['file_sk'])?>" width="130"></a></td>
+                          <td><?php echo $gol['status_validasi'] ?></td>
                           <td>
                             <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editGolongan/' . $gol['id_pegawai'] . '/' . $gol['id_golongan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusGolongan/' . $gol['id_pegawai'] . '/' . $gol['id_golongan']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
@@ -247,6 +251,7 @@
                           <th>Tanggal Mulai</th>
                           <th>Tanggal Selesai</th>
                           <th>Berkas Validasi</th>
+                          <th>Status Validasi</th>
                           <th>Aksi</th>
                       </thead>
                       <?php 
@@ -261,6 +266,7 @@
                           <td><?php echo date("d-m-Y", strtotime($dikstruk['tanggal_mulai'])); ?></td>
                           <td><?php echo date("d-m-Y", strtotime($dikstruk['tanggal_selesai'])); ?></td>
                           <td><a href="<?php echo base_url($dikstruk['berkas_validasi'])?>" target="_blank"><img src="<?php echo base_url($dikstruk['berkas_validasi'])?>" width="130"></a></td>
+                          <td><?php echo $dikstruk['status_validasi'] ?></td>
                           <td>
                             <a class="btn btn-warning" href="<?php echo base_url('Cpegawai/c_pegawai/editDikstruk/' . $dikstruk['id_pegawai'] . '/' . $dikstruk['id_diklat']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusDikstruk/' . $dikstruk['id_pegawai'] . '/' . $dikstruk['id_diklat']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a>

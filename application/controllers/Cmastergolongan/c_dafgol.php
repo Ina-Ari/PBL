@@ -12,14 +12,15 @@ class c_dafgol extends CI_Controller {
 	{
 		$isi = $this->m_dafgol->getDafgol();
 	    $data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmastergolongan/v_dafgol',
-	      'isi'       => $isi,
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmastergolongan/v_dafgol',
+	      'isi'       	=> $isi,
+	      'script'    	=> 'partial/script',
+	      'active_tab' 	=> 'dafgol'
 	    ];
 	    $this->load->view('master', $data);
 	}
@@ -27,13 +28,14 @@ class c_dafgol extends CI_Controller {
 	public function tambahDafgol()
 	{
 		$data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmastergolongan/v_insertdafgol',
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmastergolongan/v_insertdafgol',
+	      'script'    	=> 'partial/script',
+	      'active_tab' 	=> 'dafgol'
     ];
     $this->load->view('master', $data);
 	}
@@ -48,14 +50,15 @@ class c_dafgol extends CI_Controller {
 	{
 		$isi = $this->m_dafgol->detailDafgol($id);
 	    $data = [
-	      'bootstrap' => 'partial/bootstrap',
-	      'loader'    => 'partial/loader',
-	      'navbar'    => 'partial/navbar',
-	      'sidebar'   => 'partial/sidebar',
-	      'header'    => 'partial/header',
-	      'content'   => 'Vmastergolongan/v_editdafgol',
-	      'isi'       => $isi,
-	      'script'    => 'partial/script'
+	      'bootstrap' 	=> 'partial/bootstrap',
+	      'loader'    	=> 'partial/loader',
+	      'navbar'    	=> 'partial/navbar',
+	      'sidebar'   	=> 'partial/sidebar',
+	      'header'    	=> 'partial/header',
+	      'content'   	=> 'Vmastergolongan/v_editdafgol',
+	      'isi'       	=> $isi,
+	      'script'    	=> 'partial/script',
+	      'active_tab' 	=> 'dafgol'
 	    ];
 	    $this->load->view('master', $data);
 	}

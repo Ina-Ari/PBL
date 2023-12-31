@@ -19,6 +19,7 @@
 <!-- Libraries Stylesheet -->
 <link href="<?php echo base_url('assets/lib/owlcarousel/assets/owl.carousel.min.css') ?>" rel="stylesheet">
 <link href="<?php echo base_url('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') ?>" rel="stylesheet" />
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
 <!-- Customized Bootstrap Stylesheet -->
 <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">

@@ -36,14 +36,31 @@ class c_tingpendidikan extends CI_Controller {
 	      'content'   	=> 'Vmasterpendidikan/v_tambahtingkat',
 	      'script'    	=> 'partial/script',
 	      'active_tab'  => 'tingpen'
-    ];
-    $this->load->view('master', $data);
+	    ];
+	    $this->load->view('master', $data);
 	}
 
 	public function insertTingPen()
 	{
-		$this->m_tingpendidikan->insertTingPen();
-		redirect('Cmasterpendidikan/c_tingpendidikan');
+		$valid = $this->m_tingpendidikan->validasiMasterPendidikan();
+		$this->form_validation->set_rules($valid);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data = [
+		      'bootstrap' 	=> 'partial/bootstrap',
+		      'loader'    	=> 'partial/loader',
+		      'navbar'    	=> 'partial/navbar',
+		      'sidebar'   	=> 'partial/sidebar',
+		      'header'    	=> 'partial/header',
+		      'content'   	=> 'Vmasterpendidikan/v_tambahtingkat',
+		      'script'    	=> 'partial/script',
+		      'active_tab'  => 'tingpen'
+		    ];
+		    $this->load->view('master', $data);
+		} else {
+			$this->m_tingpendidikan->insertTingPen();
+			redirect('Cmasterpendidikan/c_tingpendidikan');
+		}	
 	}
 
 	public function ubahTingPen($id)

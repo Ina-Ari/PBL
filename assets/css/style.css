@@ -18,6 +18,18 @@ tbody {
     color: #0e318a;
 }
 
+/*.form-group input:focus {
+    outline: 0;
+}
+
+.form-group.error input {
+    border.color: #ff3860;
+}
+
+.form-group .error {
+    color: #ff3860;
+}*/
+
 #input-file {
     background-color: white;
 }

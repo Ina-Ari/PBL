@@ -5,6 +5,7 @@ class c_pegawai extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->library('form_validation');
 		$this->load->model('Mpegawai/m_pegawai');
 	}
 
@@ -76,7 +77,24 @@ class c_pegawai extends CI_Controller {
 		$this->form_validation->set_rules($valid);
 
 		if ($this->form_validation->run() == FALSE) {
-			redirect("Cpegawai/c_pegawai/tambahPendidikan/{$id}");
+			$status_validasi = [['status' => 'Belum Divalidasi'],['status' => 'Valid'],['status' => 'Tidak Valid']];
+			$peg = $this->m_pegawai->dataPegawai($id);
+			$masterpen = $this->m_pegawai->getTingPen();
+			$data = [
+		      'bootstrap'	  	=> 'partial/bootstrap',
+		      'loader'    	  	=> 'partial/loader',
+		      'navbar'    	  	=> 'partial/navbar',
+		      'sidebar'   	  	=> 'partial/sidebar',
+		      'header'    	  	=> 'partial/header',
+		      'content'   	  	=> 'Vpendidikan/v_tambahPendidikan',
+		      'status_validasi'	=> $status_validasi,
+		      'masterpen'	  	=> $masterpen,
+		      'peg'		  	  	=> $peg,
+		      'script'    	  	=> 'partial/script',
+		      'active_tab'		=> 'dafdosen'
+		    ];
+		    $this->load->view('master', $data);
+		    
 		} else {
 			$this->m_pegawai->insertPendidikan($id);
    			redirect("Cpegawai/c_pegawai/getAllData/{$id}");
@@ -106,8 +124,33 @@ class c_pegawai extends CI_Controller {
 
 	public function updatePendidikan($id, $id_pegawai)
 	{
-		$this->m_pegawai->updateDataPendidikan($id, $id_pegawai);
-		redirect("Cpegawai/c_pegawai/getAllData/{$id_pegawai}");
+		$valid = $this->m_pegawai->validasiPendidikan();
+		$this->form_validation->set_rules($valid);
+
+		if ($this->form_validation->run() == FALSE) {
+			$status_validasi = [['status' => 'Belum Divalidasi'],['status' => 'Valid'],['status' => 'Tidak Valid']];
+			$con = $this->m_pegawai->getPendidikanById($id_pegawai, $id);
+			// var_dump($con); die;
+			$masterpen = $this->m_pegawai->getTingPen();
+			$data = [
+		      'bootstrap' 			=> 'partial/bootstrap',
+		      'loader'    			=> 'partial/loader',
+		      'navbar'    			=> 'partial/navbar',
+		      'sidebar'   			=> 'partial/sidebar',
+		      'header'    			=> 'partial/header',
+		      'content'   			=> 'Vpendidikan/v_editpendidikan',
+		      'status_validasi'		=> $status_validasi,
+		      'masterpen'			=> $masterpen,
+		      'con'		  			=> $con,
+		      'script'    			=> 'partial/script',
+		      'active_tab'  		=> 'dafdosen'
+		    ];
+		    $this->load->view('master', $data);
+		} else {
+			$this->m_pegawai->updateDataPendidikan($id, $id_pegawai);
+			redirect("Cpegawai/c_pegawai/getAllData/{$id_pegawai}");
+		}
+		
 	}
 
 	public function hapusPendidikan($id_pegawai, $id)
@@ -120,7 +163,7 @@ class c_pegawai extends CI_Controller {
 	public function tambahGolongan($id)
 	{
 		$status_validasi = [['status' => 'Belum Divalidasi'],['status' => 'Valid'],['status' => 'Tidak Valid']];
-		$peg = $this->dataPegawai($id);
+		$peg = $this->m_pegawai->dataPegawai($id);
 		$mastergol = $this->m_pegawai->getMasterGol();
 		$data = [
 	      'bootstrap'	  => 'partial/bootstrap',
@@ -147,7 +190,7 @@ class c_pegawai extends CI_Controller {
 	public function editGolongan($id, $id_golongan)
 	{
 		$status_validasi = [['status' => 'Belum Divalidasi'],['status' => 'Valid'],['status' => 'Tidak Valid']];
-		$con = $this->getGolonganById($id, $id_golongan);
+		$con = $this->m_pegawai->getGolonganById($id, $id_golongan);
 		$mastergol = $this->m_pegawai->getMasterGol();
 		$data = [
 	      'bootstrap' => 'partial/bootstrap',
@@ -165,9 +208,9 @@ class c_pegawai extends CI_Controller {
 	    $this->load->view('master', $data);
 	}
 
-	public function updateGolongan($id_pegawai, $id)
+	public function updateGolongan($id, $id_pegawai)
 	{
-		$this->m_pegawai->updateDataGolongan($id_pegawai, $id);
+		$this->m_pegawai->updateDataGolongan($id, $id_pegawai);
 		redirect("Cpegawai/c_pegawai/getAllData/{$id_pegawai}");
 	}
 

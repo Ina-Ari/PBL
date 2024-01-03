@@ -17,6 +17,7 @@
 
 <!-- Template Javascript -->
 <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
+<!-- <script defer src="<?php echo base_url('assets/js/validasi.js') ?>"></script> -->
 
 <script type="text/javascript">
         

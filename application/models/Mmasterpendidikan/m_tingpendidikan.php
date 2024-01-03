@@ -43,6 +43,21 @@ class m_tingpendidikan extends CI_Model {
 		return $del;
 	}
 
+	public function validasiMasterPendidikan()
+	{
+		return [
+			[
+				'field'  => 'tingkat_pendidikan',
+				'label'  => 'Tingkat Pendidikan',
+				'rules'  => 'required|max_length[45]',
+				'errors' => array(
+					'required'   => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 45 karakter!',
+				),
+			],
+		];
+	}
+
 }
 
 /* End of file m_tingpendidikan.php */

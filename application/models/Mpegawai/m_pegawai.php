@@ -107,14 +107,6 @@ class m_pegawai extends CI_Model {
 			$pen['file_ijazah'] = 'assets/images/pendidikan/' . $data_foto;
 		}
 
-		// if (empty($pen['id_tingpen'])) {
-		// 	$this->session->set_flashdata('error', 'Tingkat Pendidikan Kosong!');
-		// 	redirect("Cpegawai/c_pegawai/tambahPendidikan/{$id}");
-		// } else {
-		// 	$hasil = $this->db->insert('pendidikan', $pen);
-		// 	return $hasil;
-		// }
-
 		$hasil = $this->db->insert('pendidikan', $pen);
 		return $hasil;
 
@@ -231,7 +223,7 @@ class m_pegawai extends CI_Model {
 		
 	}
 
-	public function updateDataGolongan($id_pegawai, $id)
+	public function updateDataGolongan($id, $id_pegawai)
 	{
 		$config['upload_path'] 	 = './assets/images/golongan';
 		$config['allowed_types'] = 'jpeg|jpg|png';
@@ -455,28 +447,68 @@ class m_pegawai extends CI_Model {
 				'field' => 'id_tingpen',
 				'label' => 'Tingkat Pendidikan',
 				'rules' => 'required',
-				'error' => [
-							 'required' => '%s Tidak Boleh Kosong!'
-						   ],
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+				),
 			],
 			[
 				'field' => 'nama_sekolah',
 				'label' => 'Nama Sekolah',
 				'rules' => 'required|max_length[70]',
-				'error' => [
-							 'required' => '%s Tidak Boleh Kosong!'
-						   ],
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+				),
 			],
 			[
 				'field' => 'tanggal_lulus',
 				'label' => 'Tanggal Lulus',
 				'rules' => 'required',
-				'error' => [
-							 'required' => '%s Tidak Boleh Kosong!'
-						   ],
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+				),
+			],
+			[
+				'field' => 'no_ijazah',
+				'label' => 'No Ijazah',
+				'rules' => 'max_length[15]',
+				'errors' => array(
+					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+				),
+			],
+			[
+				'field' => 'jurusan',
+				'label' => 'Jurusan',
+				'rules' => 'max_length[45]',
+				'errors' => array(
+					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+				),
+			],
+			[
+				'field' => 'gelar_depan',
+				'label' => 'Gelar Depan',
+				'rules' => 'max_length[15]',
+				'errors' => array(
+					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+				),
+			],
+			[
+				'field' => 'gelar_belakang',
+				'label' => 'Gelar Belakang',
+				'rules' => 'max_length[20]',
+				'errors' => array(
+					'max_length' => '%s tidak boleh lebih dari 20 karakter!',
+				),
 			],
 		];
 	}
+
+	
+
+	
+
+	
+
+	
 
 }
 

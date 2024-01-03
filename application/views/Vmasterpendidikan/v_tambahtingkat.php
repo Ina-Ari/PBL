@@ -1,4 +1,4 @@
-<title>Tambah Golongan</title>
+<title>Tambah Pendidikan</title>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
@@ -10,8 +10,11 @@
                 <form method="post" action="insertTingPen">
                   <div class="form-group">
                     <label for="tingkat_pendidikan" class="col-form-label">Tingkat Pendidikan</label>
-                    <input type="text" class="form-control" name="tingkat_pendidikan">
+                    <input type="text" class="form-control" name="tingkat_pendidikan" value="<?php echo set_value('tingkat_pendidikan'); ?>">
                   </div>
+                    <div style="color: red;">
+                      <?php echo form_error('tingkat_pendidikan'); ?>
+                    </div>
                   <div>
                    <button type="submit" class="btn btn-simpan mt-3">Simpan</button>
                   </div>

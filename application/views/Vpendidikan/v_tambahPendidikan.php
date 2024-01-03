@@ -16,33 +16,51 @@
                         <option value="<?php echo $key['id_tingpen'] ?>"><?php echo $key['tingkat_pendidikan'] ?></option> 
                       <?php endforeach ?>
                     </select>
-                    <?php echo form_error('id_tingpen'); ?>
+                    <div style="color: red;">
+                      <?php echo form_error('id_tingpen'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="nama_sekolah" class="col-form-label">Nama Sekolah *</label>
                     <input type="text"  class="form-control" name="nama_sekolah" value="<?php echo set_value('nama_sekolah'); ?>">
-                    <?php echo form_error('nama_sekolah'); ?>
+                    <div style="color: red;">
+                      <?php echo form_error('nama_sekolah'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="tanggal_lulus" class="col-form-label">Tanggal Lulus *</label>
-                    <input type="date" class="form-control" name="tanggal_lulus">
-                    <?php echo form_error('tanggal_lulus'); ?>
+                    <input type="date" class="form-control" name="tanggal_lulus" value="<?php echo set_value('tanggal_lulus'); ?>">
+                    <div style="color: red;">
+                      <?php echo form_error('tanggal_lulus'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="no_ijazah" class="col-form-label">No Ijazah</label>
-                    <input type="text" class="form-control" name="no_ijazah">
+                    <input type="text" class="form-control" name="no_ijazah" value="<?php echo set_value('no_ijazah'); ?>">
+                    <div style="color: red;">
+                      <?php echo form_error('no_ijazah'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="jurusan" class="col-form-label">Jurusan</label>
-                    <input type="text" class="form-control" name="jurusan">
+                    <input type="text" class="form-control" name="jurusan" value="<?php echo set_value('jurusan'); ?>">
+                    <div style="color: red;">
+                      <?php echo form_error('jurusan'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="gelar_depan" class="col-form-label">Gelar Depan</label>
-                    <input type="text" class="form-control" name="gelar_depan">
+                    <input type="text" class="form-control" name="gelar_depan" value="<?php echo set_value('gelar_depan'); ?>">
+                    <div style="color: red;">
+                      <?php echo form_error('gelar_depan'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="gelar_belakang" class="col-form-label">Gelar Belakang</label>
-                    <input type="text" class="form-control" name="gelar_belakang">
+                    <input type="text" class="form-control" name="gelar_belakang" value="<?php echo set_value('gelar_belakang'); ?>">
+                    <div style="color: red;">
+                      <?php echo form_error('gelar_belakang'); ?>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="file_ijazah" class="col-form-label">File Ijazah</label>

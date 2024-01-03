@@ -43,6 +43,21 @@ class m_dafgol extends CI_Model {
 		return $del;
 	}
 
+	public function validasiMasterGolongan()
+	{
+		return [
+			[
+				'field'  => 'jenis_golongan',
+				'label'  => 'Jenis Golongan',
+				'rules'  => 'required|max_length[45]',
+				'errors' => array(
+					'required'   => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 45 karakter!',
+				),
+			],
+		];
+	}
+
 
 }
 

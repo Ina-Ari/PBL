@@ -9,9 +9,12 @@
               <div class="card-block col-6">
                 <form method="post" action="insertDafgol">
                   <div class="form-group">
-                    <label for="jenis_golongan" class="col-form-label">Jenis Golongan</label>
-                    <input type="text" class="form-control" name="jenis_golongan">
+                    <label for="jenis_golongan" class="col-form-label">Jenis Golongan *</label>
+                    <input type="text" class="form-control" name="jenis_golongan" value="<?php echo set_value('jenis_golongan'); ?>">
                   </div>
+                  <div style="color: red;">
+                      <?php echo form_error('jenis_golongan'); ?>
+                    </div>
                   <div>
                    <button type="submit" class="btn btn-simpan mt-3">Simpan</button>
                   </div>

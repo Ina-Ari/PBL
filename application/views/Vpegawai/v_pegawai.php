@@ -39,7 +39,7 @@
                   <li class="nav-item" role="presentation">
                       <button class="button-font nav-link" id="pills-diklatStruktural-tab" data-bs-toggle="pill"
                           data-bs-target="#diklatStruktural" type="button" role="tab"
-                          aria-controls="diklatStruktural" aria-selected="false">Diklat Struktual</button>
+                          aria-controls="diklatStruktural" aria-selected="false">Diklat Struktural</button>
                   </li>
               </ul>
               <div class="tab-content" id="pills-tabContent">

@@ -3,7 +3,7 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h4 class="mb-4">Daftar Golongan</h4>
+                <h4 class="mb-4">Daftar Pendidikan</h4>
                 <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan/tambahTingpen'); ?>"><span class="btn btn-primary mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data Pendidikan</span></a>
                 <div class="table-responsive">
                     <table class="table">

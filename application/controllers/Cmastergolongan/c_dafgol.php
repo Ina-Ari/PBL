@@ -36,14 +36,34 @@ class c_dafgol extends CI_Controller {
 	      'content'   	=> 'Vmastergolongan/v_insertdafgol',
 	      'script'    	=> 'partial/script',
 	      'active_tab' 	=> 'dafgol'
-    ];
-    $this->load->view('master', $data);
+	    ];
+	    $this->load->view('master', $data);
 	}
 
 	public function insertDafgol()
 	{
-		$this->m_dafgol->insertDafgol();
-		redirect('Cmastergolongan/c_dafgol');
+		$valid = $this->m_dafgol->validasiMasterGolongan();
+		$this->form_validation->set_rules($valid);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data = [
+		      'bootstrap' 	=> 'partial/bootstrap',
+		      'loader'    	=> 'partial/loader',
+		      'navbar'    	=> 'partial/navbar',
+		      'sidebar'   	=> 'partial/sidebar',
+		      'header'    	=> 'partial/header',
+		      'content'   	=> 'Vmastergolongan/v_insertdafgol',
+		      'script'    	=> 'partial/script',
+		      'active_tab' 	=> 'dafgol'
+		    ];
+		    $this->load->view('master', $data);
+
+		} else {
+			$this->m_dafgol->insertDafgol();
+			redirect('Cmastergolongan/c_dafgol');
+		}
+		
+		
 	}
 
 	public function ubahDafgol($id)

@@ -470,7 +470,7 @@ class c_pegawai extends CI_Controller {
 			'header'    	  => 'partial/header',
 	        'content'     	  => 'vjafung/edit_jafung',
 	        'masterjf'    	  => $masterjf,
-	        'js'          	  => $jf,
+	        'jf'          	  => $jf,
 	        'masterunit'  	  => $id_unit,
 	        'script'    	  => 'partial/script',
 		    'active_tab'  	  => 'dafdosen'
@@ -497,7 +497,7 @@ class c_pegawai extends CI_Controller {
 				'header'    	  => 'partial/header',
 		        'content'     	  => 'vjafung/edit_jafung',
 		        'masterjf'    	  => $masterjf,
-		        'js'          	  => $jf,
+		        'jf'          	  => $jf,
 		        'masterunit'  	  => $id_unit,
 		        'script'    	  => 'partial/script',
 			    'active_tab'  	  => 'dafdosen'

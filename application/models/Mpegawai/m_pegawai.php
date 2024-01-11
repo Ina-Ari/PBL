@@ -616,6 +616,7 @@ class m_pegawai extends CI_Model {
 				'rules' => 'required|max_length[70]',
 				'errors' => array(
 					'required' => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 70 karakter!'
 				),
 			],
 			[
@@ -639,7 +640,7 @@ class m_pegawai extends CI_Model {
 				'label' => 'Jurusan',
 				'rules' => 'max_length[45]',
 				'errors' => array(
-					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+					'max_length' => '%s tidak boleh lebih dari 45 karakter!',
 				),
 			],
 			[

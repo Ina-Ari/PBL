@@ -143,10 +143,10 @@
                       <thead>
                           <tr>
                               <th>Nama jabatan</th>
-                              <th>No sk</th>
-                              <th>tanggal sk</th>
-                              <th>Tanggal mulai</th>
-                              <th>id unit</th>
+                              <th>No SK</th>
+                              <th>Tanggal sk</th>
+                              <th>Tanggal Mulai</th>
+                              <th>Unit</th>
                               <th>Action</th>
                           </tr>
                       </thead>
@@ -171,17 +171,17 @@
                 <!-- JABATAN FUNGSIONAL END -->
                 <!-- JABATAN STRUKTURAL START -->
                 <div class="tab-pane fade" id="jabatanStruktural" role="tabpanel" aria-labelledby="jabatanStruktural-tab">
-                  <a href="<?php echo base_url('Cpegawai/c_pegawai/tambahjabstuk/' . $peg[0]['id_pegawai']); ?>" class="waves-effect waves-dark"><span class="btn btn-primary mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data jabstuk</span></a>
+                  <a href="<?php echo base_url('Cpegawai/c_pegawai/tambahjabstuk/' . $peg[0]['id_pegawai']); ?>" class="waves-effect waves-dark"><span class="btn btn-primary mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data Jabatan Struktual</span></a>
                   <div class="table-responsive">
                     <table class="table table-bordered">
                       <thead>
                           <tr>
-                              <th>Nama jabatan</th>
-                              <th>tanggal mulai</th>
-                              <th>tanggal sk</th>
-                              <th>eselon</th>
-                              <th>tanggal selesai</th>
-                              <th>unit organisasi</th>
+                              <th>Nama Jabatan</th>
+                              <th>Tanggal Mulai</th>
+                              <th>Tanggal SK</th>
+                              <th>Eselon</th>
+                              <th>Tanggal selesai</th>
+                              <th>Unit</th>
                               <th>Action</th>
                           </tr>
                       </thead>

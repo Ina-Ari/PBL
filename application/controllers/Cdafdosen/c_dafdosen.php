@@ -61,6 +61,33 @@ class c_dafdosen extends CI_Controller {
     $this->m_dafdosen->deletePegawai($id);
     redirect('Cdafdosen/c_dafdosen');
   }
+   public function pencarian()
+{
+    if ($this->input->post('submit')) {
+        $keyword = $this->input->post('keyword');
+        $result = $this->m_dafdosen->searchPegawai($keyword);
+
+        $data = [
+          'bootstrap' => 'partial/bootstrap',
+          'loader'    => 'partial/loader',
+          'navbar'    => 'partial/navbar',
+          'sidebar'   => 'partial/sidebar',
+          'header'    => 'partial/header',
+          'content'   => 'Vdafdosen/v_dafdosen',
+          'isi'       => $result, // Pass the search result to the view
+          'script'    => 'partial/script',
+          'active_tab' => 'dafdosen'
+        ];
+
+        $this->load->view('master', $data);
+    }
+}
+public function print()
+  {
+    $data['dafdos']=$this->m_dafdosen->getPegawai("pegawai")->result();
+    $this->load->view('output/print',$data);
+    ;
+  }
 
 }
 

@@ -125,7 +125,7 @@
                             <td><a href="<?php echo base_url($pen['file_ijazah'])?>" target="_blank"><img src="<?php echo base_url($pen['file_ijazah'])?>" width="130"></a></td>
                             <td><?php echo $pen['status_validasi'] ?></td>                                             
                             <td>
-                              <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editPendidikan/' . $pen['id_pegawai'] . '/' . $pen['id_pendidikan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                              <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editPendidikan/' . $pen['id_pendidikan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                               <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusPendidikan/' . $pen['id_pegawai'] . '/' . $pen['id_pendidikan']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
                             </td>
                           </tr>
@@ -137,13 +137,75 @@
                 <!-- PENDIDIKAN END -->
                 <!-- JABATAN FUNGSIONAL START -->
                 <div class="tab-pane fade" id="jabatanFungsional" role="tabpanel" aria-labelledby="jabatanFungsional-tab">
-                  jabatan fungsional
+                  <a href="<?php echo base_url('Cpegawai/c_pegawai/tambahjafung/' . $peg[0]['id_pegawai']); ?>" class="waves-effect waves-dark"><span class="btn btn-primary mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data Jabatan Fungsional</span></a>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th>Nama jabatan</th>
+                              <th>No sk</th>
+                              <th>tanggal sk</th>
+                              <th>Tanggal mulai</th>
+                              <th>id unit</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($jabfung as $jf) : ?>
+                          <tr>
+                            <td><?php echo $jf['nama_jf'] ?></td>
+                            <td><?php echo $jf['no_sk'] ?></td>
+                            <td><?php echo $jf['tanggal_sk'] ?></td>
+                            <td><?php echo $jf['tanggal_mulai_jf'] ?></td>
+                            <td><?php echo $jf['nama_unit'] ?></td>
+                            <td>
+                              <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editjafung/' . $jf['id_jabatan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                              <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusJabfung/' . $jf['id_pegawai'] . '/' . $jf['id_jabatan']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
+                            </td>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-
+                <!-- JABATAN FUNGSIONAL END -->
+                <!-- JABATAN STRUKTURAL START -->
                 <div class="tab-pane fade" id="jabatanStruktural" role="tabpanel" aria-labelledby="jabatanStruktural-tab">
-                  jabatan struktural
+                  <a href="<?php echo base_url('Cpegawai/c_pegawai/tambahjabstuk/' . $peg[0]['id_pegawai']); ?>" class="waves-effect waves-dark"><span class="btn btn-primary mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data jabstuk</span></a>
+                  <div class="table-responsive">
+                    <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                              <th>Nama jabatan</th>
+                              <th>tanggal mulai</th>
+                              <th>tanggal sk</th>
+                              <th>eselon</th>
+                              <th>tanggal selesai</th>
+                              <th>unit organisasi</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($jabstuk as $js) : ?>
+                          <tr>
+                            <td><?php echo $js['nama_js'] ?></td>
+                            <td><?php echo $js['tanggal_mulai_js'] ?></td>
+                            <td><?php echo $js['tanggal_sk'] ?></td>
+                            <td><?php echo $js['eselon'] ?></td>
+                            <td><?php echo $js['tanggal_selesai_js'] ?></td>
+                            <td><?php echo $js['nama_unit'] ?></td>
+                            <td>
+                                <a href="<?php echo base_url("Cpegawai/c_pegawai/editjabstuk/{$js['id_jabatan']}")?>" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="<?php echo base_url("Cpegawai/c_pegawai/hapusJabstuk/{$peg[0]['id_pegawai']}/{$js['id_jabatan']}")?>" class="btn btn-danger btn-sm" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                          </tr>
+                        <?php endforeach ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-
+                <!-- JABATAN STRUKTURAL END -->
+                <!-- GOLONGAN START -->
                 <div class="tab-pane fade" id="golongan" role="tabpanel" aria-labelledby="golongan-tab">
                   <a href="<?php echo base_url('Cpegawai/c_pegawai/tambahGolongan/' . $peg[0]['id_pegawai']); ?>" class="waves-effect waves-dark"><span class="btn btn-primary sidebar-edit mb-2"><i class="fa-solid fa-user-plus"></i> Tambah Data Golongan</span>
                   </a>
@@ -184,7 +246,7 @@
                           <td><a href="<?php echo base_url($gol['file_sk'])?>" target="_blank"><img src="<?php echo base_url($gol['file_sk'])?>" width="130"></a></td>
                           <td><?php echo $gol['status_validasi'] ?></td>
                           <td>
-                            <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editGolongan/' . $gol['id_pegawai'] . '/' . $gol['id_golongan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-warning my-2" href="<?php echo base_url('Cpegawai/c_pegawai/editGolongan/' . $gol['id_golongan']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusGolongan/' . $gol['id_pegawai'] . '/' . $gol['id_golongan']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a> 
                           </td>
                         </tr>
@@ -227,7 +289,7 @@
                           <td><?php echo $dikfung['penyelenggara'] ?></td>
                           <td><?php echo $dikfung['instansi'] ?></td>
                           <td>
-                            <a class="btn btn-warning" href="<?php echo base_url('Cpegawai/c_pegawai/editDikfung/' . $dikfung['id_pegawai'] . '/' . $dikfung['id_diklat']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-warning" href="<?php echo base_url('Cpegawai/c_pegawai/editDikfung/' . $dikfung['id_diklat']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusDikfung/' . $dikfung['id_pegawai'] . '/' . $dikfung['id_diklat']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a>
                           </td>
                         </tr>
@@ -268,7 +330,7 @@
                           <td><a href="<?php echo base_url($dikstruk['berkas_validasi'])?>" target="_blank"><img src="<?php echo base_url($dikstruk['berkas_validasi'])?>" width="130"></a></td>
                           <td><?php echo $dikstruk['status_validasi'] ?></td>
                           <td>
-                            <a class="btn btn-warning" href="<?php echo base_url('Cpegawai/c_pegawai/editDikstruk/' . $dikstruk['id_pegawai'] . '/' . $dikstruk['id_diklat']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn btn-warning" href="<?php echo base_url('Cpegawai/c_pegawai/editDikstruk/' . $dikstruk['id_diklat']); ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="btn btn-danger" href="<?php echo base_url('Cpegawai/c_pegawai/hapusDikstruk/' . $dikstruk['id_pegawai'] . '/' . $dikstruk['id_diklat']); ?>" onclick="return confirm_hapus()"><i class="fa-solid fa-trash-can"></i></a>
                           </td>
                         </tr>

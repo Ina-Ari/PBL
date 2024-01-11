@@ -42,6 +42,10 @@ class m_dafdosen extends CI_Model {
 
 	public function getPegawai()
 	{
+		$this->db->join('master_jabatan_fung', 'pegawai.jabatan_fungsional = master_jabatan_fung.id_jf','left');
+		$this->db->join('master_unit', 'pegawai.jabatan_fungsional = master_unit.id_unit','left');
+        $this->db->join('master_pendidikan', 'pegawai.pendidikan = master_pendidikan.id_tingpen','left');
+
 		$result = $this->db->get('pegawai');
 		return $result;
 	}
@@ -70,6 +74,16 @@ class m_dafdosen extends CI_Model {
 		$this->db->where('id_pegawai', $id);
 		$hasil = $this->db->delete('pegawai');
 		return $hasil;
+	}
+	public function searchPegawai($keyword)
+	{
+		$this->db->join('master_jabatan_fung', 'pegawai.jabatan_fungsional = master_jabatan_fung.id_jf','left');
+        $this->db->join('master_pendidikan', 'pegawai.pendidikan = master_pendidikan.id_tingpen','left');
+        $this->db->join('master_unit', 'pegawai.jabatan_fungsional = master_unit.id_unit','left');
+		$this->db->like('nama_pegawai', $keyword);
+		$this->db->or_like('nip', $keyword);
+		$result = $this->db->get('pegawai');
+		return $result;
 	}
 
 }

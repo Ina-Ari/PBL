@@ -9,9 +9,9 @@
                     <table class="table">
                         <thead>
                           <tr>
-                            <th>No</th>
-                            <th>Jenis Golongan</th>
-                            <th>Aksi</th>
+                            <th class="col-3">No</th>
+                            <th class="col-6">Jenis Golongan</th>
+                            <th class="col-3">Aksi</th>
                           </tr>
                         </thead>
                         <?php 

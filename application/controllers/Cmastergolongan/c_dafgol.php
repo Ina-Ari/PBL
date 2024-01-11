@@ -85,8 +85,28 @@ class c_dafgol extends CI_Controller {
 
 	public function updateDafgol($id)
 	{
-		$this->m_dafgol->editDafgol($id);
-		redirect('Cmastergolongan/c_dafgol');
+		$valid = $this->m_dafgol->validasiMasterGolongan();
+		$this->form_validation->set_rules($valid);
+
+		if ($this->form_validation->run() == FALSE) {
+			$isi = $this->m_dafgol->detailDafgol($id);
+		    $data = [
+		      'bootstrap' 	=> 'partial/bootstrap',
+		      'loader'    	=> 'partial/loader',
+		      'navbar'    	=> 'partial/navbar',
+		      'sidebar'   	=> 'partial/sidebar',
+		      'header'    	=> 'partial/header',
+		      'content'   	=> 'Vmastergolongan/v_editdafgol',
+		      'isi'       	=> $isi,
+		      'script'    	=> 'partial/script',
+		      'active_tab' 	=> 'dafgol'
+		    ];
+		    $this->load->view('master', $data);
+
+		} else {
+			$this->m_dafgol->editDafgol($id);
+			redirect('Cmastergolongan/c_dafgol');
+		}
 	}
 
 	public function hapusDafgol($id)

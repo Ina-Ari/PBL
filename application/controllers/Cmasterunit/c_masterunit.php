@@ -1,31 +1,31 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class c_tingpendidikan extends CI_Controller {
+class c_masterunit extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Mmasterpendidikan/m_tingpendidikan');
+		$this->load->model('Mmasterunit/m_masterunit');
 	}
 
 	public function index()
 	{
-		$isi = $this->m_tingpendidikan->getTingPen();
+		$isi = $this->m_masterunit->getUnit();
 	    $data = [
 	      'bootstrap' 	=> 'partial/bootstrap',
 	      'loader'    	=> 'partial/loader',
 	      'navbar'    	=> 'partial/navbar',
 	      'sidebar'   	=> 'partial/sidebar',
 	      'header'    	=> 'partial/header',
-	      'content'   	=> 'Vmasterpendidikan/v_tingpendidikan',
+	      'content'   	=> 'Vmasterunit/v_Unit',
 	      'isi'       	=> $isi,
 	      'script'    	=> 'partial/script',
-	      'active_tab'  => 'tingpen'
+	      'active_tab' 	=> 'Unit'
 	    ];
 	    $this->load->view('master', $data);
 	}
 
-	public function tambahTingPen()
+	public function tambahUnit()
 	{
 		$data = [
 	      'bootstrap' 	=> 'partial/bootstrap',
@@ -33,16 +33,16 @@ class c_tingpendidikan extends CI_Controller {
 	      'navbar'    	=> 'partial/navbar',
 	      'sidebar'   	=> 'partial/sidebar',
 	      'header'    	=> 'partial/header',
-	      'content'   	=> 'Vmasterpendidikan/v_tambahtingkat',
+	      'content'   	=> 'Vmasterunit/v_insertUnit',
 	      'script'    	=> 'partial/script',
-	      'active_tab'  => 'tingpen'
+	      'active_tab' 	=> 'Unit'
 	    ];
 	    $this->load->view('master', $data);
 	}
 
-	public function insertTingPen()
+	public function insertUnit()
 	{
-		$valid = $this->m_tingpendidikan->validasiMasterPendidikan();
+		$valid = $this->m_masterunit->validasiUnit();
 		$this->form_validation->set_rules($valid);
 
 		if ($this->form_validation->run() == FALSE) {
@@ -52,67 +52,69 @@ class c_tingpendidikan extends CI_Controller {
 		      'navbar'    	=> 'partial/navbar',
 		      'sidebar'   	=> 'partial/sidebar',
 		      'header'    	=> 'partial/header',
-		      'content'   	=> 'Vmasterpendidikan/v_tambahtingkat',
+		      'content'   	=> 'Vmasterunit/v_insertUnit',
 		      'script'    	=> 'partial/script',
-		      'active_tab'  => 'tingpen'
+		      'active_tab' 	=> 'Unit'
 		    ];
 		    $this->load->view('master', $data);
+
 		} else {
-			$this->m_tingpendidikan->insertTingPen();
-			redirect('Cmasterpendidikan/c_tingpendidikan');
-		}	
+			$this->m_masterunit->insertUnit();
+			redirect('Cmasterunit/c_masterunit');
+		}
 	}
 
-	public function ubahTingPen($id)
+	public function ubahUnit($id)
 	{
-		$isi = $this->m_tingpendidikan->detailTingPen($id);
+		$isi = $this->m_masterunit->detailUnit($id);
 	    $data = [
 	      'bootstrap' 	=> 'partial/bootstrap',
 	      'loader'    	=> 'partial/loader',
 	      'navbar'    	=> 'partial/navbar',
 	      'sidebar'   	=> 'partial/sidebar',
 	      'header'    	=> 'partial/header',
-	      'content'   	=> 'Vmasterpendidikan/v_edittingpendidikn',
+	      'content'   	=> 'Vmasterunit/v_editUnit',
 	      'isi'       	=> $isi,
 	      'script'    	=> 'partial/script',
-	      'active_tab'  	=> 'tingpen'
+	      'active_tab' 	=> 'Unit'
 	    ];
 	    $this->load->view('master', $data);
 	}
 
-	public function updateTingPen($id)
+	public function updateUnit($id)
 	{
-		$valid = $this->m_tingpendidikan->validasiMasterPendidikan();
+		$valid = $this->m_masterunit->validasiUnit();
 		$this->form_validation->set_rules($valid);
 
 		if ($this->form_validation->run() == FALSE) {
-			$isi = $this->m_tingpendidikan->detailTingPen($id);
+			$isi = $this->m_masterunit->detailUnit($id);
 		    $data = [
 		      'bootstrap' 	=> 'partial/bootstrap',
 		      'loader'    	=> 'partial/loader',
 		      'navbar'    	=> 'partial/navbar',
 		      'sidebar'   	=> 'partial/sidebar',
 		      'header'    	=> 'partial/header',
-		      'content'   	=> 'Vmasterpendidikan/v_edittingpendidikn',
+		      'content'   	=> 'Vmasterunit/v_editUnit',
 		      'isi'       	=> $isi,
 		      'script'    	=> 'partial/script',
-		      'active_tab'  	=> 'tingpen'
+		      'active_tab' 	=> 'Unit'
 		    ];
 		    $this->load->view('master', $data);
+
 		} else {
-			$this->m_tingpendidikan->editTingPen($id);
-			redirect('Cmasterpendidikan/c_tingpendidikan');
+			$this->m_masterunit->editUnit($id);
+			redirect('Cmasterunit/c_masterunit');
 		}
 		
 	}
 
-	public function hapusTingPen($id)
+	public function hapusUnit($id)
 	{
-		$this->m_tingpendidikan->deleteTingPen($id);
-		redirect('Cmasterpendidikan/c_tingpendidikan');
+		$this->m_masterunit->deleteUnit($id);
+		redirect('Cmasterunit/c_masterunit');
 	}
 
 }
 
-/* End of file c_tingpendidikan.php */
-/* Location: ./application/controllers/c_tingpendidikan.php */
+/* End of file c_masterunit.php */
+/* Location: ./application/controllers/c_masterunit.php */

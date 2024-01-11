@@ -9,8 +9,11 @@
               <div class="card-block col-6">
                 <form method="post" action="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan/updateTingPen/' . $isi['id_tingpen']) ?>">
                   <div class="form-group">
-                    <label for="tingkat_pendidikan" class="col-form-label">Tingkat Pendidikan</label>
-                    <input type="text" class="form-control" name="tingkat_pendidikan" value="<?php echo $isi['tingkat_pendidikan'] ?>">
+                    <label for="tingkat_pendidikan" class="col-form-label">Tingkat Pendidikan *</label>
+                    <input type="text" class="form-control" name="tingkat_pendidikan" value="<?php echo form_error('tingkat_pendidikan')? set_value('tingkat_pendidikan') : $isi['tingkat_pendidikan'] ?>">
+                  </div>
+                  <div style="color: red;">
+                    <?php echo form_error('tingkat_pendidikan'); ?>
                   </div>
                   <div>
                     <button type="submit" class="btn btn-simpan mt-3">Simpan</button>

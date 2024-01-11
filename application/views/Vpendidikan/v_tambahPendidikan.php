@@ -13,7 +13,8 @@
                     <select name="id_tingpen" id="input-file" class="form-control">
                       <option value="">-- Pilih Pendidikan --</option>
                       <?php foreach ($masterpen as $key) : ?>
-                        <option value="<?php echo $key['id_tingpen'] ?>"><?php echo $key['tingkat_pendidikan'] ?></option> 
+                        <?php $cek = ($key['id_tingpen'] == set_value('id_tingpen'))? "selected" : ""; ?>
+                        <option value="<?php echo $key['id_tingpen'] ?>" <?php echo $cek ?>><?php echo $key['tingkat_pendidikan'] ?></option> 
                       <?php endforeach ?>
                     </select>
                     <div style="color: red;">
@@ -70,7 +71,8 @@
                     <label for="status_validasi" class="col-form-label">Status Validasi</label>
                     <select id="input-file" class="form-control" name="status_validasi">
                       <?php foreach ($status_validasi as $key) { ?>
-                        <?php $cek = ($key['status'] == $con['status_validasi'])? "selected" : ""; ?>
+                        <?php $cek_value = set_value('status_validasi') ? set_value('status_validasi') : ""?>
+                        <?php $cek = ($key['status'] == $cek_value)? "selected" : ""; ?>
                         <option value="<?php echo $key['status'] ?>" <?php echo $cek ?>><?php echo $key['status'] ?></option> 
                       <?php } ?>
                     </select>

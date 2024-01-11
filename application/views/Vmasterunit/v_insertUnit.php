@@ -1,20 +1,20 @@
-<title>Tambah Pendidikan</title>
+<title>Tambah Unit Kerja</title>
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-              <a href="<?php echo base_url('Cmasterpendidikan/c_tingpendidikan'); ?>" class="btn-back">
+              <a href="<?php echo base_url('Cmasterunit/c_masterunit'); ?>" class="btn-back">
                 <span><i class="fa-solid fa-arrow-left-long mb-3"></i> Kembali</span>
               </a>
               <div class="card-block col-6">
-                <form method="post" action="insertTingPen">
+                <form method="post" action="insertUnit">
                   <div class="form-group">
-                    <label for="tingkat_pendidikan" class="col-form-label">Tingkat Pendidikan</label>
-                    <input type="text" class="form-control" name="tingkat_pendidikan" value="<?php echo set_value('tingkat_pendidikan'); ?>">
+                    <label for="nama_unit" class="col-form-label">Nama Unit *</label>
+                    <input type="text" class="form-control" name="nama_unit" value="<?php echo set_value('nama_unit'); ?>">
                   </div>
-                  <div style="color: red;">
-                    <?php echo form_error('tingkat_pendidikan'); ?>
-                  </div>
+                    <div style="color: red;">
+                      <?php echo form_error('nama_unit'); ?>
+                    </div>
                   <div>
                    <button type="submit" class="btn btn-simpan mt-3">Simpan</button>
                   </div>

@@ -21,6 +21,7 @@ class m_dafdosen extends CI_Model {
 			'nama_pegawai' => $this->input->post('nama_pegawai'),
 			'nip' => $this->input->post('nip'),
 			'nidn' => $this->input->post('nidn'),
+			'password' => $this->input->post('nip'),
 			'jenis_kelamin' => $this->input->post('jenis_kelamin'),
 			'no_kartupegawai' => $this->input->post('no_kartupegawai'),
 		);
@@ -97,19 +98,21 @@ class m_dafdosen extends CI_Model {
 			[
 				'field' => 'nip',
 				'label' => 'NIP',
-				'rules' => 'required|max_length[20]',
+				'rules' => 'required|max_length[20]|numeric',
 				'errors' => array(
 					'required' => '%s tidak boleh kosong!',
-					'max_length' => '%s tidak boleh lebih dari 20 karakter!'
+					'max_length' => '%s tidak boleh lebih dari 20 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
 				),
 			],
 			[
 				'field' => 'nidn',
 				'label' => 'NIDN',
-				'rules' => 'required|max_length[10]',
+				'rules' => 'required|max_length[10]|numeric',
 				'errors' => array(
 					'required' => '%s tidak boleh kosong!',
 					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
 				),
 			],
 			[
@@ -124,10 +127,11 @@ class m_dafdosen extends CI_Model {
 			[
 				'field' => 'no_kartupegawai',
 				'label' => 'No Kartu Pegawai',
-				'rules' => 'required|max_length[45]',
+				'rules' => 'required|max_length[45]|numeric',
 				'errors' => array(
 					'required' => '%s tidak boleh kosong!', 
 					'max_length' => '%s tidak boleh lebih dari 45 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
 				),
 			]
 		];

@@ -38,7 +38,8 @@
                 <select class="form-control" id="input-file" name="jenis_kelamin">
                   <option value="">-- Pilih Jenis Kelamin --</option>
                   <?php foreach ($gender as $key) { ?>
-                    <?php $cek = ($key['nama_gender'] == $peg[0]['jenis_kelamin'])? "selected" : ""; ?>
+                    <?php $cek_value = set_value('jenis_kelamin') ? set_value('jenis_kelamin') : "" ?>
+                    <?php $cek = ($key['nama_gender'] == $cek_value)? "selected" : ""; ?>
                     <option value="<?php echo $key['nama_gender'] ?>" <?php echo $cek ?>><?php echo $key['nama_gender'] ?></option> 
                   <?php } ?>
                 </select>

@@ -6,84 +6,185 @@
               <a href="<?php echo base_url('Cdafdosen/c_dafdosen'); ?>" class="btn-back">
                 <span><i class="fa-solid fa-arrow-left-long mb-4"></i> Kembali</span>
               </a>
-                <ul class="d-flex justify-content-around nav nav-tabs mb-3" id="pills-tab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link active" id="pills-dataUtama-tab" data-bs-toggle="pill"
-                          data-bs-target="#dataUtama" type="button" role="tab" aria-controls="dataUtama"
-                          aria-selected="true">Data Utama</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-riwayatPendidikan-tab" data-bs-toggle="pill" data-bs-target="#riwayatPendidikan" type="button" role="tab" aria-controls="
-                      riwayatPendidikan" aria-selected="false">Riwayat Pendidikan</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-jabatanFungsional-tab" data-bs-toggle="pill"
-                          data-bs-target="#jabatanFungsional" type="button" role="tab"
-                          aria-controls="jabatanFungsional" aria-selected="false">Jabatan Fungsional</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-jabatanStruktural-tab" data-bs-toggle="pill"
-                          data-bs-target="#jabatanStruktural" type="button" role="tab"
-                          aria-controls="jabatanStruktural" aria-selected="false">Jabatan Struktural</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-golongan-tab" data-bs-toggle="pill"
-                          data-bs-target="#golongan" type="button" role="tab"
-                          aria-controls="golongan" aria-selected="false">Golongan</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-diklatFungsional-tab" data-bs-toggle="pill"
-                          data-bs-target="#diklatFungsional" type="button" role="tab"
-                          aria-controls="diklatFungsional" aria-selected="false">Diklat Fungsional</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <button class="button-font nav-link" id="pills-diklatStruktural-tab" data-bs-toggle="pill"
-                          data-bs-target="#diklatStruktural" type="button" role="tab"
-                          aria-controls="diklatStruktural" aria-selected="false">Diklat Struktural</button>
-                  </li>
+              <ul class="d-flex justify-content-around nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link active" id="pills-dataUtama-tab" data-bs-toggle="pill"
+                        data-bs-target="#dataUtama" type="button" role="tab" aria-controls="dataUtama"
+                        aria-selected="true">Data Utama</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-riwayatPendidikan-tab" data-bs-toggle="pill" data-bs-target="#riwayatPendidikan" type="button" role="tab" aria-controls="
+                    riwayatPendidikan" aria-selected="false">Riwayat Pendidikan</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-jabatanFungsional-tab" data-bs-toggle="pill"
+                        data-bs-target="#jabatanFungsional" type="button" role="tab"
+                        aria-controls="jabatanFungsional" aria-selected="false">Jabatan Fungsional</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-jabatanStruktural-tab" data-bs-toggle="pill"
+                        data-bs-target="#jabatanStruktural" type="button" role="tab"
+                        aria-controls="jabatanStruktural" aria-selected="false">Jabatan Struktural</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-golongan-tab" data-bs-toggle="pill"
+                        data-bs-target="#golongan" type="button" role="tab"
+                        aria-controls="golongan" aria-selected="false">Golongan</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-diklatFungsional-tab" data-bs-toggle="pill"
+                        data-bs-target="#diklatFungsional" type="button" role="tab"
+                        aria-controls="diklatFungsional" aria-selected="false">Diklat Fungsional</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="button-font nav-link" id="pills-diklatStruktural-tab" data-bs-toggle="pill"
+                        data-bs-target="#diklatStruktural" type="button" role="tab"
+                        aria-controls="diklatStruktural" aria-selected="false">Diklat Struktural</button>
+                </li>
               </ul>
               <div class="tab-content" id="pills-tabContent">
                 <!-- DATA UTAMA START -->
                 <div class="tab-pane fade show active" id="dataUtama" role="tabpanel" aria-labelledby="dataUtama-tab">
                   <?php echo form_open_multipart('Cpegawai/c_pegawai/editDataUtama/'. $peg[0]['id_pegawai']) ; ?>
+                  <?php $cek_error = form_error('nama_pegawai') || form_error('nip') || form_error('nidn') || form_error('jenis_kelamin') || form_error('no_kartupegawai') ?>
                   <div class="table-responsive">
                     <div class="mb-3">
-                      <img src="<?php echo base_url($peg[0]['foto'])?>" width="150">
+                        <img src="<?php echo base_url($peg[0]['foto'])?>" width="150">
                     </div>
-                    <div class="mb-3">
-                      <label for="foto" class="form-label">Foto Pegawai</label>
-                      <input id="input-file" class="form-control" type="file" name="foto" value="<?php echo($peg[0]['foto'])?>">
-                    </div>                      
-                    <div class="form-group">
-                      <label for="nama_pegawai" class="col-form-label">Nama Pegawai</label>
-                      <input type="text" class="form-control" name="nama_pegawai" value="<?php echo $peg[0]['nama_pegawai'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="nip" class="col-form-label">NIP</label>
-                      <input type="text" class="form-control" name="nip" value="<?php echo $peg[0]['nip'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="nidn" class="col-form-label">NIDN</label>
-                      <input type="text" class="form-control" name="nidn" value="<?php echo $peg[0]['nidn'] ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin</label>
-                      <select id="input-file" class="form-control" name="jenis_kelamin">
-                        <?php foreach ($gender as $key) { ?>
-                          <?php $cek = ($key['nama_gender'] == $peg[0]['jenis_kelamin'])? "selected" : ""; ?>
-                          <option value="<?php echo $key['nama_gender'] ?>" <?php echo $cek ?>><?php echo $key['nama_gender'] ?></option> 
-                        <?php } ?>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="no_kartupegawai" class="col-form-label">No Kartu Pegawai</label>
-                        <input type="text" class="form-control" name="no_kartupegawai" value="<?php echo $peg[0]['no_kartupegawai'] ?>">
-                    </div>
-                    <div>
-                      <button type="submit" class="btn btn-simpan mt-3" onclick="return confirm_simpan()">Simpan</button>
+                    <div class="row">
+                      <div class="col-md martop">
+                        <div class="form-group">
+                          <label for="foto" class="form-label">Foto Pegawai</label>
+                          <input id="input-file" class="form-control" type="file" name="foto" value="<?php echo($peg[0]['foto'])?>">
+                        </div>                      
+                        <div class="form-group">
+                          <label for="nama_pegawai" class="col-form-label">Nama Pegawai *</label>
+                          <input type="text" class="form-control" name="nama_pegawai" value="<?php echo $cek_error ? set_value('nama_pegawai') : $peg[0]['nama_pegawai'] ?>">
+                          <div style="color: red;"><?php echo form_error('nama_pegawai'); ?></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="nip" class="col-form-label">NIP *</label>
+                          <input type="text" class="form-control" name="nip" value="<?php echo $cek_error ? set_value('nip') : $peg[0]['nip'] ?>">
+                          <div style="color: red;"><?php echo form_error('nip'); ?></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="nidn" class="col-form-label">NIDN *</label>
+                          <input type="text" class="form-control" name="nidn" value="<?php echo $cek_error ? set_value('nidn') : $peg[0]['nidn'] ?>">
+                          <div style="color: red;"><?php echo form_error('nidn'); ?></div>
+                        </div>
+                        <div class="form-group">
+                          <label for="gelar_depan" class="col-form-label">Gelar Depan</label>
+                          <input type="text" class="form-control" name="gelar_depan" value="<?php echo $peg[0]['gelar_depan'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="gelar_belakang" class="col-form-label">Gelar Belakang</label>
+                          <input type="text" class="form-control" name="gelar_belakang" value="<?php echo $peg[0]['gelar_belakang'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="tempat_lahir" class="col-form-label">Tempat Lahir</label>
+                          <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $peg[0]['tempat_lahir'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir</label>
+                          <input type="date" class="form-control" name="tanggal_lahir" value="<?php echo $peg[0]['tanggal_lahir'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="agama" class="col-form-label">Agama</label>
+                          <select id="input-file" class="form-control" name="agama">
+                            <option value="">-- Pilih Agama --</option>
+                            <?php foreach ($agama as $key) { ?>
+                              <?php $cek = ($key['nama_agama'] == $peg[0]['agama'])? "selected" : ""; ?>
+                              <option value="<?php echo $key['nama_agama'] ?>" <?php echo $cek ?>><?php echo $key['nama_agama'] ?></option> 
+                            <?php } ?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin *</label>
+                          <select id="input-file" class="form-control" name="jenis_kelamin">
+                            <?php foreach ($gender as $key) { ?>
+                              <?php $cek_value = set_value('jenis_kelamin') ? set_value('jenis_kelamin') : $con['jenis_kelamin'] ?>
+                              <?php $cek = ($key['nama_gender'] == $cek_value)? "selected" : ""; ?>
+                              <option value="<?php echo $key['nama_gender'] ?>" <?php echo $cek ?>><?php echo $key['nama_gender'] ?></option>
+                            <?php } ?>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="no_telepon" class="col-form-label">No Telepon</label>
+                          <input type="text" class="form-control" name="no_telepon" value="<?php echo $peg[0]['no_telepon'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="email" class="col-form-label">Email</label>
+                          <input type="email" class="form-control" name="email" value="<?php echo $peg[0]['email'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="no_kartupegawai" class="col-form-label">No Kartu Pegawai *</label>
+                          <input type="text" class="form-control" name="no_kartupegawai" value="<?php echo $cek_error ? set_value('no_kartupegawai') : $peg[0]['no_kartupegawai'] ?>">
+                          <div style="color: red;"><?php echo form_error('no_kartupegawai'); ?></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat" class="col-form-label">Alamat</label>
+                            <textarea class="form-control" name="alamat" rows="3"><?php echo $peg[0]['alamat'] ?></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md">
+                        <div class="form-group">
+                          <label for="no_npwp" class="col-form-label">No NPWP</label>
+                          <input type="text" class="form-control" name="no_npwp" value="<?php echo $peg[0]['no_npwp'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="no_ktp" class="col-form-label">No KTP</label>
+                          <input type="text" class="form-control" name="no_ktp" value="<?php echo $peg[0]['no_ktp'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="jenis_pegawai" class="col-form-label">Jenis Pegawai</label>
+                          <input type="text" class="form-control" name="jenis_pegawai" value="<?php echo $peg[0]['jenis_pegawai'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="status_pegawai" class="col-form-label">Status Pegawai</label>
+                          <input type="text" class="form-control" name="status_pegawai" value="<?php echo $peg[0]['status_pegawai'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="kedudukan_hukum" class="col-form-label">Kedudukan Hukum</label>
+                          <input type="text" class="form-control" name="kedudukan_hukum" value="<?php echo $peg[0]['kedudukan_hukum'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="jenis_pns" class="col-form-label">Jenis PNS</label>
+                          <input type="text" class="form-control" name="jenis_pns" value="<?php echo $peg[0]['jenis_pns'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="nosk_cpns" class="col-form-label">No SK CPNS</label>
+                          <input type="text" class="form-control" name="nosk_cpns" value="<?php echo $peg[0]['nosk_cpns'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="no_kariskarsu" class="col-form-label">No Kariskarsu</label>
+                          <input type="text" class="form-control" name="no_kariskarsu" value="<?php echo $peg[0]['no_kariskarsu'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="no_taspen" class="col-form-label">No Taspen</label>
+                          <input type="text" class="form-control" name="no_taspen" value="<?php echo $peg[0]['no_taspen'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="no_serdos" class="col-form-label">No Serdos</label>
+                          <input type="text" class="form-control" name="no_serdos" value="<?php echo $peg[0]['no_serdos'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="tahun_serdos" class="col-form-label">Tahun Serdos</label>
+                          <input type="text" class="form-control" name="tahun_serdos" value="<?php echo $peg[0]['tahun_serdos'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="tanggal_tamatcpns" class="col-form-label">Tanggal Tamat CPNS</label>
+                          <input type="date" class="form-control" name="tanggal_tamatcpns" value="<?php echo $peg[0]['tanggal_tamatcpns'] ?>">
+                        </div>
+                        <div class="form-group">
+                          <label for="masakerja_cpns" class="col-form-label">Masa Kerja CPNS</label>
+                          <input type="text" class="form-control" name="masakerja_cpns" value="<?php echo $peg[0]['masakerja_cpns'] ?>">
+                        </div>
+                        <div>
+                          <button type="submit" class="btn btn-simpan mt-3">Simpan</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                    
                   <?php form_close(); ?>
                 </div>
                 <!-- DATA UTAMA END -->

@@ -19,11 +19,32 @@ class m_pegawai extends CI_Model {
 		$this->load->library('upload', $config);
 			
 		$peg = array(
-			'nama_pegawai' 	  => $this->input->post('nama_pegawai'),
-			'nip' 			  => $this->input->post('nip'),
-			'nidn' 			  => $this->input->post('nidn'),
-			'jenis_kelamin'   => $this->input->post('jenis_kelamin'),
-			'no_kartupegawai' => $this->input->post('no_kartupegawai'),
+			'nama_pegawai' 	  	=> $this->input->post('nama_pegawai'),
+			'nip' 			  	=> $this->input->post('nip'),
+			'nidn' 			  	=> $this->input->post('nidn'),
+			'jenis_kelamin'   	=> $this->input->post('jenis_kelamin'),
+			'no_kartupegawai' 	=> $this->input->post('no_kartupegawai'),
+			'gelar_depan' 	  	=> $this->input->post('gelar_depan'),
+			'gelar_belakang'  	=> $this->input->post('gelar_belakang'),
+			'tempat_lahir' 	  	=> $this->input->post('tempat_lahir'),
+			'tanggal_lahir'   	=> $this->input->post('tanggal_lahir'),
+			'agama' 		  	=> $this->input->post('agama'),
+			'alamat' 		  	=> $this->input->post('alamat'),
+			'no_telepon'      	=> $this->input->post('no_telepon'),
+			'email' 		  	=> $this->input->post('email'),
+			'no_npwp' 		  	=> $this->input->post('no_npwp'),
+			'no_ktp' 		  	=> $this->input->post('no_ktp'),
+			'jenis_pegawai'   	=> $this->input->post('jenis_pegawai'),
+			'status_pegawai'  	=> $this->input->post('status_pegawai'),
+			'kedudukan_hukum' 	=> $this->input->post('kedudukan_hukum'),
+			'jenis_pns' 	  	=> $this->input->post('jenis_pns'),
+			'nosk_cpns' 		=> $this->input->post('nosk_cpns'),
+			'no_kariskarsu' 	=> $this->input->post('no_kariskarsu'),
+			'no_taspen' 		=> $this->input->post('no_taspen'),
+			'no_serdos' 		=> $this->input->post('no_serdos'),
+			'tahun_serdos' 		=> $this->input->post('tahun_serdos'),
+			'tanggal_tamatcpns' => $this->input->post('tanggal_tamatcpns'),
+			'masakerja_cpns' 	=> $this->input->post('masakerja_cpns'),
 		);
 
 		if ($this->upload->do_upload('foto')) {
@@ -924,6 +945,60 @@ class m_pegawai extends CI_Model {
 				'errors' =>array('required'=>'%s masih kosong',),
 			],
 			// ... tambahkan aturan validasi lainnya sesuai kebutuhan
+		];
+	}
+
+	public function validasiDosen()
+	{
+		return [
+			[
+				'field' => 'nama_pegawai',
+				'label' => 'Nama Pegawai',
+				'rules' => 'required|max_length[100]',
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 100 karakter!'
+				),
+			],
+			[
+				'field' => 'nip',
+				'label' => 'NIP',
+				'rules' => 'required|max_length[20]|numeric',
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 20 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
+				),
+			],
+			[
+				'field' => 'nidn',
+				'label' => 'NIDN',
+				'rules' => 'required|max_length[10]|numeric',
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
+				),
+			],
+			[
+				'field' => 'jenis_kelamin',
+				'label' => 'Jenis Kelamin',
+				'rules' => 'required',
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!',
+					'max_length' => '%s tidak boleh lebih dari 15 karakter!',
+				),
+			],
+			[
+				'field' => 'no_kartupegawai',
+				'label' => 'No Kartu Pegawai',
+				'rules' => 'required|max_length[45]|numeric',
+				'errors' => array(
+					'required' => '%s tidak boleh kosong!', 
+					'max_length' => '%s tidak boleh lebih dari 45 karakter!',
+					'numeric' => '%s hanya boleh berisi angka!'
+				),
+			]
 		];
 	}
 

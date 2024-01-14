@@ -13,6 +13,8 @@ class c_pegawai extends CI_Controller {
 	// BAGIAN DATA UTAMA
 	public function getAllData($id)
 	{
+		$agama = [['nama_agama' => 'Islam'], ['nama_agama' => 'Hindu'], ['nama_agama' => 'Katolik'], 
+				 ['nama_agama' => 'Kristen'], ['nama_agama' => 'Buddha'], ['nama_agama' => 'Khonghucu']];
 		$gender = [['nama_gender' => 'Laki-Laki'],['nama_gender' => 'Perempuan']];
 		$golongan = $this->m_pegawai->dataGolonganPegawai($id);
 		$pendidikan = $this->m_pegawai->dataPendidikanPegawai($id);
@@ -36,6 +38,7 @@ class c_pegawai extends CI_Controller {
 		  'jabstuk'				=> $jabstuk,
 		  'jabfung'				=> $jabfung,
 	      'peg'		  			=> $peg,
+	      'agama'				=> $agama,
 	      'script'    			=> 'partial/script',
 	      'active_tab'  		=> 'dafdosen'
 	    ];
@@ -45,8 +48,44 @@ class c_pegawai extends CI_Controller {
 
 	public function editDataUtama($id)
 	{
-		$this->m_pegawai->updateDataUtama($id);
-		redirect("Cpegawai/c_pegawai/getAllData/{$id}");
+		$valid = $this->m_pegawai->validasiDosen();
+		$this->form_validation->set_rules($valid);
+
+		if ($this->form_validation->run() == FALSE) {
+			$agama = [['nama_agama' => 'Islam'], ['nama_agama' => 'Hindu'], ['nama_agama' => 'Katolik'], 
+				 ['nama_agama' => 'Kristen'], ['nama_agama' => 'Buddha'], ['nama_agama' => 'Khonghucu']];
+			$gender = [['nama_gender' => 'Laki-Laki'],['nama_gender' => 'Perempuan']];
+			$golongan = $this->m_pegawai->dataGolonganPegawai($id);
+			$pendidikan = $this->m_pegawai->dataPendidikanPegawai($id);
+			$diklatStruktural = $this->m_pegawai->dataDikstrukPegawai($id);
+			$diklatFungsional = $this->m_pegawai->dataDikfungPegawai($id);
+			$jabstuk = $this->m_pegawai->datajabstuk($id);
+	        $jabfung = $this->m_pegawai->datajafung($id);
+			$peg = $this->m_pegawai->dataPegawai($id);
+			$data = [
+		      'bootstrap' 			=> 'partial/bootstrap',
+		      'loader'    			=> 'partial/loader',
+		      'navbar'   			=> 'partial/navbar',
+		      'sidebar'   			=> 'partial/sidebar',
+		      'header'    			=> 'partial/header',
+		      'content'   			=> 'Vpegawai/v_pegawai',
+		      'gender' 	  			=> $gender,
+		      'golongan'			=> $golongan,
+		      'pendidikan'			=> $pendidikan,
+			  'diklatStruktural' 	=> $diklatStruktural,
+			  'diklatFungsional' 	=> $diklatFungsional,
+			  'jabstuk'				=> $jabstuk,
+			  'jabfung'				=> $jabfung,
+		      'peg'		  			=> $peg,
+		      'agama'				=> $agama,
+		      'script'    			=> 'partial/script',
+		      'active_tab'  		=> 'dafdosen'
+		    ];
+		    $this->load->view('master', $data);
+		} else {
+			$this->m_pegawai->updateDataUtama($id);
+			redirect("Cpegawai/c_pegawai/getAllData/{$id}");
+		}
 	}
 
 

@@ -10,7 +10,7 @@
                 <?php echo form_open_multipart('Cpegawai/c_pegawai/updateDataJafung/' . $jf['id_jabatan'] . '/' .$jf['id_pegawai']) ?>
                     <!-- Form fields here -->
                     <div class="form-group">
-                        <label for="id_jf" class="col-form-label">Nama Jabatan</label>
+                        <label for="id_jf" class="col-form-label">Nama Jabatan *</label>
                         <select name="id_jf" id="input-file" class="form-control">
                             <option selected disabled>Pilih Jabatan</option>
                             <?php foreach ($masterjf as $key) : ?>
@@ -20,22 +20,22 @@
                         <?php echo form_error('id_jf', '<div class="text-danger">', '</div>'); ?>
                     </div> 
                     <div class="form-group">
-                        <label for="no_sk" class="col-form-label">Nomor SK</label>
+                        <label for="no_sk" class="col-form-label">Nomor SK *</label>
                         <input type="text" name="no_sk" class="form-control" value="<?php echo $jf['no_sk']; ?>">
                         <?php echo form_error('no_sk', '<div class="text-danger">', '</div>'); ?>
                     </div> 
                     <div class="form-group">
-                        <label for="tanggal_sk" class="col-form-label">Tanggal SK</label>
+                        <label for="tanggal_sk" class="col-form-label">Tanggal SK *</label>
                         <input type="date" name="tanggal_sk" class="form-control" value="<?php echo $jf['tanggal_sk']; ?>">
                         <?php echo form_error('tanggal_sk', '<div class="text-danger">', '</div>'); ?>
                     </div> 
                     <div class="form-group">
-                        <label for="tanggal_mulai_jf" class="col-form-label">Tanggal Mulai</label>
+                        <label for="tanggal_mulai_jf" class="col-form-label">Tanggal Mulai *</label>
                         <input type="date" name="tanggal_mulai_jf" class="form-control" value="<?php echo $jf['tanggal_mulai_jf']; ?>">
                         <?php echo form_error('tanggal_mulai_jf', '<div class="text-danger">', '</div>'); ?>
                     </div> 
                     <div class="form-group">
-                        <label for="id_unit" class="col-form-label">Unit Organisasi</label>
+                        <label for="id_unit" class="col-form-label">Unit Organisasi *</label>
                         <select name="id_unit" id="input-file" class="form-control">
                             <option selected disabled>Pilih Unit</option>
                             <?php foreach ($masterunit as $key) : ?>
